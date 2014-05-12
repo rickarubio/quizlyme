@@ -1,7 +1,9 @@
 class CreateQuizzes < ActiveRecord::Migration
-  def up
-  end
+  def change
+    create_table :quizzes do |t|
+      t.string :name
 
-  def down
+      t.timestamps
+    end
   end
 end

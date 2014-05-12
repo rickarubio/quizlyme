@@ -1,7 +1,11 @@
 class CreateChoices < ActiveRecord::Migration
-  def up
-  end
+  def change
+    create_table :choices do |t|
+      t.text :text
+      t.boolean :answer
+      t.belongs_to :question
 
-  def down
+      t.timestamps
+    end
   end
 end

@@ -1,7 +1,10 @@
 class CreateQuestions < ActiveRecord::Migration
-  def up
-  end
+  def change
+    create_table :questions do |t|
+      t.text :text
+      t.belongs_to :quiz
 
-  def down
+      t.timestamps
+    end
   end
 end
