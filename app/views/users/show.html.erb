@@ -1,1 +1,10 @@
 Hello <%= @user.username %>
+
+Here are Your current Quizzes:
+<% if @quizzes.empty? %>
+  <p>Seems you currently do not have any quizzes you can take.
+<% else %>
+  <% @quizzes.each do |quiz| %>
+    <p><%= @quiz.name %></p>
+  <% end %>
+<% end %>

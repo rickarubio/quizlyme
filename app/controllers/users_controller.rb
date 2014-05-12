@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @quizzes = @user.quizzes
     redirect_to root_path unless @user && (@user.id == params[:id].to_i)
   end
 
