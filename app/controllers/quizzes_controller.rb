@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+  before_filter :redirect_guests
   def index
   end
 
