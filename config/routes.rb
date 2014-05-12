@@ -2,6 +2,7 @@ Quizlyme::Application.routes.draw do
   root :to => 'pages#index'
 
   resources :users
+  resources :quizzes
 
   get "logout", to: "sessions#destroy", as: "logout"
   get "login", to: "sessions#new", as: "login"
