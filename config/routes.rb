@@ -3,6 +3,10 @@ Quizlyme::Application.routes.draw do
 
   resources :users
 
+  get "logout", to: "sessions#destroy", as: "logout"
+  get "login", to: "sessions#new", as: "login"
+  post "sessions", to: "sessions#create", as: "sessions"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
