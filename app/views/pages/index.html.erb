@@ -10,4 +10,6 @@
 <% else %>
   <p>You are currently not logged in</p>
   <%= link_to "Log in", login_path %>
+  <p>Or create an account if you don't already have one</p>
+  <%= link_to "Create Account", new_user_path %>
 <% end %>
