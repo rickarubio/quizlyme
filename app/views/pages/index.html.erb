@@ -6,10 +6,10 @@
 
 <% if current_user %>
   <p>Seems that you are logged in</p>
-  <%= link_to "Log out", logout_path %>
+  <%= link_to "Log out", logout_path, {class: "btn btn-lg btn-primary"} %>
 <% else %>
   <p>You are currently not logged in</p>
-  <%= link_to "Log in", login_path %>
+  <%= link_to "Log in", login_path, {class: "btn btn-lg btn-primary"} %>
   <p>Or create an account if you don't already have one</p>
-  <%= link_to "Create Account", new_user_path %>
+  <%= link_to "Create Account", new_user_path, {class: "btn btn-lg btn-primary"} %>
 <% end %>
