@@ -1,1 +1,10 @@
 <h1>Editing <%= @quiz.name %></h1>
+<% if @quiz.questions.empty? == false %>
+  <%= @quiz.questions.each do |question| %>
+    <p>You have a question</p>
+  <% end %>
+<% else %>
+  <p>Seems you haven't added questions to this quiz.</p>
+<% end %>
+
+<button type="button" class="btn btn-lg btn-success add-question">Add Question</button>
