@@ -15,4 +15,14 @@ body {
 .list-group-item:hover {
   background-color: rgba(196, 200, 255, 0.3);
   border-style: outset;
-};
+}
+
+@media all and (max-width : 768px) {
+  body {
+    padding-top: 160px;
+  }
+
+  .nav a {
+    border-top: 1px solid silver;
+  }
+}
