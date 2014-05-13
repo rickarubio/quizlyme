@@ -1,1 +1,7 @@
 You are now making a new quiz.
+
+<%= form_for @quiz do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create Quiz" %> 
+<% end %>
