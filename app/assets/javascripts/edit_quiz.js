@@ -1,23 +1,25 @@
 $(document).ready(function(){
-  var questionButton = $('.add-question')[0];
-  if (questionButton) {
-    $(questionButton).on('click', function(e){
-      e.preventDefault();
-      question.insert();
-    });
-  }
-  choice.listen();
+  question.listenAndInsert();
+  choice.listenAndInsert();
 });
 
 var question = (function(){
   // private vars and functions
-  var _question = $('.question-template').clone();
+  var _question = function() {
+    var question = $('.question-template').clone();
+    $(question).attr('class', 'panel panel-default question-panel');
+    return question;
+  }
   // public interface
   return {
-    insert: function() {
-      var questionTitle = $('.question-template').clone();
-      $(questionTitle).attr('class', 'panel panel-default question-panel');
-      $(questionTitle).insertBefore($('.add-question'));
+    listenAndInsert: function() {
+      var questionButton = $('.add-question')[0];
+      if (questionButton) {
+        $(questionButton).on('click', function(e){
+          e.preventDefault();
+          _question().insertBefore($('.add-question'));
+        });
+      }
     }
   }
 })();
@@ -31,10 +33,11 @@ var choice = (function(){
   }
   // public interface
   return {
-    listen: function() {
+    listenAndInsert: function() {
       $('.body-container').on('click', '.add-choice', function(e) {
         _choice().insertBefore($(this));
       });
     }
   }
 })();
+
