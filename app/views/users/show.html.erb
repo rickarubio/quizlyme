@@ -1,4 +1,6 @@
-Hello <%= @user.username %>
+<div class="container">
+  <h2>Hello <%= @user.username %>!</h2>
+</div>
 
 <div class="row">
   <div class="user-actions">
@@ -10,7 +12,6 @@ Hello <%= @user.username %>
         <ul class="list-group">
           <li class="list-group-item"><%= link_to "Create a New Quiz", new_quiz_path %></li>
           <li class="list-group-item"><%= link_to "View All Quizzes", quizzes_path %></li>
-          <li class="list-group-item">Edit Quizzes</li>
         </ul>
       </div>
     </div>
