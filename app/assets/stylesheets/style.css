@@ -17,6 +17,27 @@ body {
   border-style: outset;
 }
 
+.add-question {
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+}
+
+.choice {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.add-choice {
+  display: block;
+  margin: auto;
+}
+
 @media all and (max-width : 768px) {
   body {
     padding-top: 160px;
