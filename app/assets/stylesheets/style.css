@@ -26,8 +26,8 @@ textarea {
 }
 
 .choice {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: 97%;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 10px;
@@ -41,6 +41,11 @@ textarea {
 .submit-quiz-changes {
   display: block;
   margin: auto;
+}
+
+.choice-radio {
+  display: inline;
+  width: 3%;
 }
 
 @media all and (max-width : 768px) {

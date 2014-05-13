@@ -5,7 +5,7 @@
   <% end %>
 <% else %>
   <p>Seems you haven't added questions to this quiz yet.</p>
-  <p>Perhaps you should.</p>
+  <p>Use the radio buttons to select the correct answer choice for the question.</p>
 <% end %>
 
 <button type="button" class="btn btn-lg btn-success add-question">Add Question</button>
@@ -14,7 +14,7 @@
 
 
 <!-- hidden templating for questions and choices -->
-<div class="panel panel-default hidden question-template">
+<div class="panel panel-default hidden question-template" data-question-num="0">
   <div class="panel-heading">
     <h3 class="panel-title">Editing A Question</h3>
   </div>
@@ -24,6 +24,7 @@
   </div>
 </div>
 
-<input class="choice-template hidden" type="text" value="Enter Choice Text Here"> 
+<input class="choice-template hidden" type="text" value="Enter Choice Text Here">
+<input type="radio" class="choice-radio-template hidden" name="0" value="0">
 
 
