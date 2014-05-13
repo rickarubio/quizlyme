@@ -38,6 +38,11 @@ textarea {
   margin: auto;
 }
 
+.submit-quiz-changes {
+  display: block;
+  margin: auto;
+}
+
 @media all and (max-width : 768px) {
   body {
     padding-top: 160px;

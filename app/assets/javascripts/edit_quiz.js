@@ -24,7 +24,7 @@ var question = (function(){
 
 var choice = (function(){
   // private vars and functions
-  var _choice = function(button) {
+  var _choice = function() {
     var choice = $('.choice-template').clone();
     choice.attr('class', 'choice');
     return choice;
