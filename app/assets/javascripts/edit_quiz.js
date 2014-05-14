@@ -1,6 +1,7 @@
 $(document).ready(function(){
   question.listenAndInsert();
   choice.listenAndInsert();
+  submit.listen();
 });
 
 var question = (function(){
@@ -77,6 +78,28 @@ var radio = (function() {
       radio.attr('value', radioValue);
 
       radio.insertBefore($(questionButton).prev());
+    }
+  }
+})();
+
+var submit = (function() {
+  return {
+    listen: function() {
+      $('.submit-quiz-changes').on('click', function() {
+        submit.send();
+      });
+    },
+
+    send: function() {
+      $.ajax({
+        type: "POST",
+        url: "/quizzes",
+        data: "hello"
+      }).done(function() {
+        console.log("hello there!");
+      }).fail(function() {
+        console.log("submit button was clicked and ajax call failed.");
+      });
     }
   }
 })();

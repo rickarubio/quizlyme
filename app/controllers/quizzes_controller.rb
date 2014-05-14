@@ -1,4 +1,4 @@
-class QuizzesController < ApplicationController
+rclass QuizzesController < ApplicationController
   before_filter :redirect_guests
   def index
     @quizzes = Quiz.all
