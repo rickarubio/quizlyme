@@ -1,5 +1,6 @@
-rclass QuizzesController < ApplicationController
+class QuizzesController < ApplicationController
   before_filter :redirect_guests
+
   def index
     @quizzes = Quiz.all
   end
@@ -27,6 +28,9 @@ rclass QuizzesController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      format.json { render json: {msg: "quiz successfully updated"} }
+    end
   end
 
   def destroy

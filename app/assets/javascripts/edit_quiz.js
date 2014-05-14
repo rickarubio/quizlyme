@@ -53,8 +53,6 @@ var choice = (function(){
 })();
 
 var radio = (function() {
-  // private vars and functions
-  // public interface
   return {
     incrementRadioGroup: function() {
       var radioTemplate = $('.choice-radio-template');
@@ -86,20 +84,32 @@ var submit = (function() {
   return {
     listen: function() {
       $('.submit-quiz-changes').on('click', function() {
-        submit.send();
+        submit.send(quiz.ID(), quiz.toJSON());
       });
     },
 
-    send: function() {
+    send: function(quizID, quizJSON) {
       $.ajax({
-        type: "POST",
-        url: "/quizzes",
-        data: "hello"
-      }).done(function() {
-        console.log("hello there!");
+        type: "PUT",
+        url: "/quizzes/" + quizID,
+        data: {"name": "hello"}
+      }).done(function(data) {
+        console.log(data);
       }).fail(function() {
         console.log("submit button was clicked and ajax call failed.");
       });
+    }
+  }
+})();
+
+var quiz = (function() {
+  return {
+    toJSON: function() {
+      return "hi";
+    },
+
+    ID: function() {
+      return $('.quiz-title').attr('data-quiz-id');
     }
   }
 })();

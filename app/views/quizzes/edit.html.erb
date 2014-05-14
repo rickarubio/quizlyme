@@ -1,4 +1,4 @@
-<h1>Editing <%= @quiz.name %></h1>
+<h1 class="quiz-title" data-quiz-id=<%= @quiz.id %>>Editing <%= @quiz.name %></h1>
 <% if @quiz.questions.empty? == false %>
   <%= @quiz.questions.each do |question| %>
     <p>You have a question</p>
