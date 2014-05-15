@@ -8,7 +8,7 @@ var question = (function(){
   // private vars and functions
   var _question = function() {
     var question = $('.question-template').clone();
-    $(question).attr('class', 'panel panel-default question-panel');
+    $(question).attr('class', 'panel panel-default question-panel new-question');
     return question;
   }
   // public interface
@@ -70,7 +70,7 @@ var radio = (function() {
       var questionPanel = $(questionButton).parent().parent();
       var questionNumber = questionPanel.attr('data-question-num');
 
-      radio.attr('name', questionNumber)
+      radio.attr('name', questionNumber);
 
       var radioValue = $(questionButton).parent().find('.choice-radio').length.toString();
       radio.attr('value', radioValue);
@@ -92,7 +92,7 @@ var submit = (function() {
       $.ajax({
         type: "PUT",
         url: "/quizzes/" + quizID,
-        data: {"name": "hello"}
+        data: quizJSON
       }).done(function(data) {
         console.log(data);
       }).fail(function() {
@@ -105,7 +105,39 @@ var submit = (function() {
 var quiz = (function() {
   return {
     toJSON: function() {
-      return "hi";
+      var quizID = quiz.ID();
+
+      var quizJSON = {
+        "quizID": quizID,
+        "newQuestions": {}
+      }
+
+      $('.new-question').each(function(idx, question) {
+        var questionText = $(question).find('textarea').val();
+        questionID = $(question).attr('data-question-num');
+
+        quizJSON.newQuestions[questionID] = {"questionText": questionText};
+        quizJSON.newQuestions[questionID]["choices"] = {}
+
+        var choices = $(question).find('.choice');
+
+        $(choices).each(function(idx, choice) {
+          var choiceID = idx;
+          quizJSON.newQuestions[questionID]["choices"][choiceID] = {}
+          quizJSON.newQuestions[questionID]["choices"][choiceID]["choiceText"] = $(choice).val();
+
+          var isAnswer = $(this).prev()[0].checked
+
+          if (isAnswer) {
+            quizJSON.newQuestions[questionID]["choices"][choiceID]["answer"] = true;
+          } else {
+            quizJSON.newQuestions[questionID]["choices"][choiceID]["answer"] = false;
+          }
+        });
+
+      });
+
+      return quizJSON
     },
 
     ID: function() {

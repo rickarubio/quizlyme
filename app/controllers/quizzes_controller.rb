@@ -28,6 +28,23 @@ class QuizzesController < ApplicationController
   end
 
   def update
+
+    quizID = params[:quizID].to_i
+    new_questions = params[:newQuestions].keys
+
+    new_questions.each do |q_num|
+      questionText = params[:newQuestions][q_num][:questionText]
+      question = Question.create(text: questionText, quiz_id: quizID)
+
+      new_choices = params[:newQuestions][q_num][:choices].keys
+
+      new_choices.each do |c_num|
+        text = params[:newQuestions][q_num][:choices][c_num][:choiceText]
+        answer = params[:newQuestions][q_num][:choices][c_num][:answer]
+        Choice.create(text: text, answer: answer, question_id: question.id)
+      end
+    end
+
     respond_to do |format|
       format.json { render json: {msg: "quiz successfully updated"} }
     end
