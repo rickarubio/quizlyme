@@ -1,7 +1,23 @@
 <h1 class="quiz-title" data-quiz-id=<%= @quiz.id %>>Editing <%= @quiz.name %></h1>
-<% if @quiz.questions.empty? == false %>
-  <%= @quiz.questions.each do |question| %>
-    <p>You have a question</p>
+<% if !@quiz.questions.empty? %>
+  <% @quiz.questions.each_with_index do |question, q_idx| %>
+    <div class="panel panel-default question-panel existing-question" data-question-num=<%= q_idx %>>
+      <div class="panel-heading">
+        <h3 class="panel-title">Editing Existing Question #<%= q_idx %></h3>
+      </div>
+      <div class="panel-body">
+        <textarea rows="8" cols="120"><%= question.text %></textarea>
+        <% question.choices.each_with_index do |choice, c_idx| %>
+          <% if choice.answer %>
+            <input type="radio" class="choice-radio" name=<%= q_idx %> value=<%= c_idx %> checked>
+          <% else %>
+            <input type="radio" class="choice-radio" name=<%= q_idx %> value=<%= c_idx %>>
+          <% end %>
+          <input class="choice" type="text" value=<%= choice.text %>>
+        <% end %>
+        <button type="button" class="btn btn-success add-choice">Add Choice</button>
+      </div>
+    </div>
   <% end %>
 <% else %>
   <p>Seems you haven't added questions to this quiz yet.</p>
@@ -16,7 +32,7 @@
 <!-- hidden templating for questions and choices -->
 <div class="panel panel-default hidden question-template" data-question-num="0">
   <div class="panel-heading">
-    <h3 class="panel-title">Editing A Question</h3>
+    <h3 class="panel-title">Adding a New Question</h3>
   </div>
   <div class="panel-body">
     <textarea rows="8" cols="120">Enter Question Text Here</textarea>

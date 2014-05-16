@@ -27,11 +27,12 @@ textarea {
 }
 
 .choice {
-  display: inline-block;
+  display: block;
   width: 97%;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 10px;
+  margin-left: 3%;
 }
 
 .add-choice {
@@ -46,7 +47,11 @@ textarea {
 
 .choice-radio {
   display: inline;
-  width: 3%;
+  float: left;
+  vertical-align: sub;
+  height: 44px;
+  padding: 0;
+  margin: 0;
 }
 
 @media all and (max-width : 768px) {
