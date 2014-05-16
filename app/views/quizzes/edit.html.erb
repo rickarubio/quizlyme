@@ -13,7 +13,7 @@
           <% else %>
             <input type="radio" class="choice-radio" name=<%= q_idx %> value=<%= c_idx %>>
           <% end %>
-          <input class="choice" type="text" value=<%= choice.text %>>
+          <input class="choice" type="text" value="<%= choice.text %>">
         <% end %>
         <button type="button" class="btn btn-success add-choice">Add Choice</button>
       </div>
