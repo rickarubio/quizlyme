@@ -109,9 +109,37 @@ var quiz = (function() {
 
       var quizJSON = {
         "quizID": quizID,
-        "newQuestions": {}
+        "newQuestions": {},
+        "existingQuestions": {}
       }
 
+      // existing questions
+        $('.existing-question').each(function(idx, question) {
+        var questionText = $(question).find('textarea').val();
+        questionID = $(question).attr('data-question-num');
+
+        quizJSON.existingQuestions[questionID] = {"questionText": questionText};
+        quizJSON.existingQuestions[questionID]["choices"] = {}
+
+        var choices = $(question).find('.choice');
+
+        $(choices).each(function(idx, choice) {
+          var choiceID = parseInt($(choice).attr('data-choice-id'));
+          quizJSON.existingQuestions[questionID]["choices"][choiceID] = {}
+          quizJSON.existingQuestions[questionID]["choices"][choiceID]["choiceText"] = $(choice).val();
+
+          var isAnswer = $(this).prev()[0].checked
+
+          if (isAnswer) {
+            quizJSON.existingQuestions[questionID]["choices"][choiceID]["answer"] = true;
+          } else {
+            quizJSON.existingQuestions[questionID]["choices"][choiceID]["answer"] = false;
+          }
+        });
+
+      });
+
+      // new questions
       $('.new-question').each(function(idx, question) {
         var questionText = $(question).find('textarea').val();
         questionID = $(question).attr('data-question-num');
@@ -137,6 +165,7 @@ var quiz = (function() {
 
       });
 
+      debugger;
       return quizJSON
     },
 
