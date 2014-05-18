@@ -3,6 +3,9 @@ Quizlyme::Application.routes.draw do
 
   resources :users
   resources :quizzes
+  
+  get "my_quizzes", to: "quizzes#myquizzes", as: "my_quizzes"
+  get "examination/:id", to: "quizzes#examination", as: "examination"
 
   get "logout", to: "sessions#destroy", as: "logout"
   get "login", to: "sessions#new", as: "login"

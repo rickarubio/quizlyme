@@ -1,0 +1,4 @@
+<h1>Quizzes</h1>
+<% @quizzes.each do |quiz| %>
+  <h2><%= link_to quiz.name, quiz_path(quiz) %></h2>
+<% end %>

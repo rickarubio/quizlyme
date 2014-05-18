@@ -3,5 +3,6 @@ You are now making a new quiz.
 <%= form_for @quiz do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Create Quiz" %> 
 <% end %>

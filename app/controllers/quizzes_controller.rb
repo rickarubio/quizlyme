@@ -5,6 +5,14 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all
   end
 
+  def myquizzes
+    @quizzes = Quiz.where(user_id: current_user.id)
+  end
+
+  def examination
+    @quiz = Quiz.find params[:id]
+  end
+
   def new
     @quiz = Quiz.new
   end
