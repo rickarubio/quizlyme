@@ -1,5 +1,24 @@
 <h1>Quizzes</h1>
 <% @quizzes.each do |quiz| %>
-  <h2 class="test-link"><%= link_to quiz.name, examination_path(quiz.id) %></h2>
+  <h2 class="examination-link"><%= link_to quiz.name, examination_path(quiz.id) %></h2>
   <p>Created by <%= User.find(quiz.user_id).username %></p>
 <% end %>
+
+<div class="modal fade" id="take-examination-confirmation">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">You're about to take an examination!</h4>
+      </div>
+      <div class="modal-body">
+        <h5>Please confirm that you really want to take the test.</h5>
+        <h5><em>Your results will be logged in the system once you confirm!</em></h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info cancel-exam" data-dismiss="modal">Get me out of here!</button>
+        <button type="button" class="btn btn-primary btn-warning take-exam">I want to take the exam!</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

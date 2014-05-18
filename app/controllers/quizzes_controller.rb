@@ -11,6 +11,7 @@ class QuizzesController < ApplicationController
 
   def examination
     @quiz = Quiz.find params[:id]
+    @user = current_user
   end
 
   def new
