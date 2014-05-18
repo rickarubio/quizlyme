@@ -2,6 +2,7 @@ $(document).ready(function(){
   question.listenAndInsert();
   choice.listenAndInsert();
   submit.listen();
+  quiz.listenForDelete();
 });
 
 var question = (function(){
@@ -104,6 +105,20 @@ var submit = (function() {
 
 var quiz = (function() {
   return {
+    listenForDelete: function() {
+      var quizID = quiz.ID();
+      $('.delete-quiz').on('click', function() {
+        $.ajax({
+          type: "DELETE",
+          url: "/quizzes/" + quizID
+        }).done(function(data) {
+          window.location = "/quizzes";
+        }).fail(function() {
+          console.log('failed to delete the quiz');
+        });
+      });
+    },
+
     toJSON: function() {
       var quizID = quiz.ID();
 

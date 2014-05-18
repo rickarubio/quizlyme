@@ -1,3 +1,4 @@
+<h1>Quizzes</h1>
 <% @quizzes.each do |quiz| %>
-  <h1><%= link_to quiz.name, quiz_path(quiz) %></h1>
+  <h2><%= link_to quiz.name, quiz_path(quiz) %></h2>
 <% end %>

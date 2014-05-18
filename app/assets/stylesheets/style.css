@@ -58,6 +58,10 @@ textarea {
   background-color: rgba(20, 241, 20, 0.41);
 }
 
+.delete-quiz {
+  margin: 8px;
+}
+
 @media all and (max-width : 768px) {
   body {
     padding-top: 160px;

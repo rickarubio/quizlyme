@@ -1,4 +1,5 @@
 <h1 class="quiz-title" data-quiz-id=<%= @quiz.id %>>Editing <%= @quiz.name %></h1>
+<button type="button" class="btn btn-lg btn-danger delete-quiz">Delete Quiz</button>
 <% if !@quiz.questions.empty? %>
   <% @quiz.questions.each_with_index do |question, q_idx| %>
     <div class="panel panel-default question-panel existing-question" data-question-num=<%= question.id %>>
@@ -26,7 +27,7 @@
 
 <button type="button" class="btn btn-lg btn-success add-question">Add Question</button>
 
-<button type="button" class="btn btn-lg btn-danger submit-quiz-changes">Submit Changes</button>
+<button type="button" class="btn btn-lg btn-warning submit-quiz-changes">Submit Changes</button>
 
 
 <!-- hidden templating for questions and choices -->

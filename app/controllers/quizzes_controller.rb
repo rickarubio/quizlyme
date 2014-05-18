@@ -84,5 +84,10 @@ class QuizzesController < ApplicationController
   end
 
   def destroy
+    respond_to do |format|
+      quiz = Quiz.find params[:id]
+      quiz.destroy
+      format.json { render json: {msg: "quiz deleted successfully"} }
+    end
   end
 end
