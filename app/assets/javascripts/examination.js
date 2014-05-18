@@ -11,7 +11,7 @@ var examination = (function() {
         $('.take-exam').on('click', function() {
           $.ajax({
             type: 'GET',
-            url: /examination/:id/user/:id
+            url: "/examination/:id/user/:id" // pending implementation
           }).done(function() {
             console.log('examination now commencing!');
           }).fail(function() {
