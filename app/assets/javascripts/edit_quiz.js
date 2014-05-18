@@ -94,7 +94,7 @@ var submit = (function() {
         url: "/quizzes/" + quizID,
         data: quizJSON
       }).done(function(data) {
-        console.log(data);
+        window.location = "/quizzes/" + quizID;
       }).fail(function() {
         console.log("submit button was clicked and ajax call failed.");
       });
@@ -114,7 +114,7 @@ var quiz = (function() {
       }
 
       // existing questions
-        $('.existing-question').each(function(idx, question) {
+      $('.existing-question').each(function(idx, question) {
         var questionText = $(question).find('textarea').val();
         questionID = $(question).attr('data-question-num');
 
@@ -124,7 +124,7 @@ var quiz = (function() {
         var choices = $(question).find('.choice');
 
         $(choices).each(function(idx, choice) {
-          var choiceID = parseInt($(choice).attr('data-choice-id'));
+          var choiceID = parseInt($(choice).attr('data-choice-id')) || "new-choice-" +  idx
           quizJSON.existingQuestions[questionID]["choices"][choiceID] = {}
           quizJSON.existingQuestions[questionID]["choices"][choiceID]["choiceText"] = $(choice).val();
 
@@ -136,7 +136,6 @@ var quiz = (function() {
             quizJSON.existingQuestions[questionID]["choices"][choiceID]["answer"] = false;
           }
         });
-
       });
 
       // new questions
@@ -165,7 +164,6 @@ var quiz = (function() {
 
       });
 
-      debugger;
       return quizJSON
     },
 

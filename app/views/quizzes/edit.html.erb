@@ -7,7 +7,7 @@
       </div>
       <div class="panel-body">
         <textarea rows="8" cols="120"><%= question.text %></textarea>
-        <% question.choices.each_with_index do |choice, c_idx| %>
+        <% question.choices.order(:created_at).each_with_index do |choice, c_idx| %>
           <% if choice.answer %>
             <input type="radio" class="choice-radio" name=<%= q_idx %> value=<%= c_idx %> checked>
           <% else %>
