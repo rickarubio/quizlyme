@@ -10,8 +10,8 @@ class QuizzesController < ApplicationController
   end
 
   def examination
-    @quiz = Quiz.find params[:id]
-    @user = current_user
+    @quiz = Quiz.find params[:exam_id]
+    @user = current_user.id
   end
 
   def new

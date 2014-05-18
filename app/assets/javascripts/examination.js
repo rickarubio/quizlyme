@@ -9,14 +9,7 @@ var examination = (function() {
         e.preventDefault();
         $('#take-examination-confirmation').modal('show');
         $('.take-exam').on('click', function() {
-          $.ajax({
-            type: 'GET',
-            url: "/examination/:id/user/:id" // pending implementation
-          }).done(function() {
-            console.log('examination now commencing!');
-          }).fail(function() {
-            console.log('failed to take the examination');
-          });
+          document.location.href = e.currentTarget.firstChild.href;
         });
       });
     }
