@@ -12,10 +12,10 @@ body {
   width: 400px;
 }
 
-.list-group-item:hover {
+/*.list-group-item:hover {
   background-color: rgba(196, 200, 255, 0.3);
   border-style: outset;
-}
+}*/
 
 .add-question {
   margin-bottom: 10px;
@@ -52,6 +52,10 @@ textarea {
   height: 44px;
   padding: 0;
   margin: 0;
+}
+
+.answer {
+  background-color: rgba(20, 241, 20, 0.41);
 }
 
 @media all and (max-width : 768px) {

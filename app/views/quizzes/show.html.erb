@@ -1,19 +1,23 @@
 <a href=<%= edit_quiz_path(@quiz) %>>
   <button type="button" class="btn btn-lg btn-warning">Enter Edit Mode</button>
 </a>
-<h1><%= @quiz.name %></h1>
+<h1><%= @quiz.name %> - (<%= @quiz.questions.count %> Questions)</h1>
 
 
 
-<% @quiz.questions.each do |question| %>
+<% @quiz.questions.each_with_index do |question, idx| %>
   <div class="panel panel-default question-list">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= question.text %></h3>
+      <h3 class="panel-title">Question #<%= idx + 1 %> - <%= question.text %></h3>
     </div>
     <div class="panel-body">
       <ul class="list-group">
-        <% question.choices.each do |choice| %>
-          <li class="list-group-item"><%= choice.text %></li>
+        <% question.choices.order(:created_at).each do |choice| %>
+          <% if choice.answer %>
+            <li class="list-group-item answer"><%= choice.text %></li>
+          <% else %>
+            <li class="list-group-item"><%= choice.text %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
