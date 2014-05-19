@@ -63,9 +63,9 @@ q1 = Question.create(text: "This tech tycoon dropped out of Harvard University a
 q2 = Question.create(text: "Originally fired from the company he helped found, he was later hired back in 1997. Who is this CEO?", quiz_id: quiz3.id)
 q3 = Question.create(text: "Who created the genius videogame mega-hit 'Flappy Bird'?", quiz_id: quiz3.id)
 
-Choice.create(text: "Steve Jobs", answer: false, question_id: q1.id)
-Choice.create(text: "Bill Gates", answer: false, question_id: q1.id)
-Choice.create(text: "Mark Zuckerberg", answer: true, question_id: q1.id)
+Choice.create(text: "Apple", answer: false, question_id: q1.id)
+Choice.create(text: "Microsoft", answer: false, question_id: q1.id)
+Choice.create(text: "Facebook", answer: true, question_id: q1.id)
 
 Choice.create(text: "Bill Gates", answer: false, question_id: q2.id)
 Choice.create(text: "Steve Jobs", answer: true, question_id: q2.id)
