@@ -7,6 +7,11 @@ table {
   text-align: left;
 }
 
+.results-row:hover {
+  background-color: rgba(27, 195, 248, 0.41);
+  cursor: pointer;
+}
+
 .row {
   text-align: center;
 }

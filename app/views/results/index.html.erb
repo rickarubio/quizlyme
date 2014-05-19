@@ -1,8 +1,9 @@
-<h2>Hello <%= @user.username %>!</h2> 
+<h2>Hello <%= @user.username %>!</h2>
+<p>You can click on a quiz to see which questions you got right and which questions you missed!</p>
 <h1>Here are you Quiz Results:</h1>
 
 <div class="table-responsive">
-  <table class="table table-striped table-bordered">
+  <table class="table table-bordered">
   <thead>
     <tr>
       <th>Quiz Name</th>
@@ -12,7 +13,7 @@
   </thead>
   <tbody>
     <% @results.each do |result| %>
-      <tr>
+      <tr class="results-row">
         <td><%= Quiz.find(result.quiz_id).name %></td>
         <td><%= local_time(result.created_at) %></td>
         <td><%= number_to_percentage(result.score * 100, precision: 2) %></td>
