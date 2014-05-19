@@ -25,21 +25,31 @@ class ResultsController < ApplicationController
 
     num_correct_selections = 0
     total_quiz_questions = @quiz.questions.count
+    user_responses = []
 
     @questions_and_selections.each do |question, selection|
       question = Question.find(question)
       selection = Choice.find(selection)
       correct_answer = question.choices.where(answer: true).first
-      num_correct_selections += 1 if selection.eql?(correct_answer)
+      user_was_correct = selection.eql?(correct_answer)
+      num_correct_selections += 1 if user_was_correct
+
+      user_responses << UserResponse.create(
+        result_id: -1,
+        quiz_id: @quiz.id,
+        question_id: question.id,
+        choice_id: selection.id,
+        correct: user_was_correct)
     end
 
     score = num_correct_selections.to_f / total_quiz_questions
 
-    Result.create(
+    result = Result.create(
       user_id: current_user.id,
       quiz_id: @quiz.id,
-      score: score
-    )
+      score: score)
+
+    user_responses.each { |user_response| user_response.update_attributes(result_id: result.id) }
 
     respond_to do |format|
       format.json { render json: {msg: "success"} }

@@ -80,6 +80,10 @@ textarea {
   background-color: rgba(20, 241, 20, 0.41);
 }
 
+.incorrect {
+  background-color: rgba(240, 20, 20, 0.41);
+}
+
 .delete-quiz {
   margin: 8px;
 }

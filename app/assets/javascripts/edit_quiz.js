@@ -112,7 +112,7 @@ var quiz = (function() {
           type: "DELETE",
           url: "/quizzes/" + quizID
         }).done(function(data) {
-          window.location = "/quizzes";
+          window.location = "/my_quizzes";
         }).fail(function() {
           console.log('failed to delete the quiz');
         });

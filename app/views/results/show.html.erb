@@ -6,12 +6,11 @@
     </div>
     <div class="panel-body">
       <ul class="list-group">
-        <% question.choices.order(:created_at).each do |choice| %>
-          <% if choice.answer %>
-            <li class="list-group-item answer"><%= choice.text %></li>
-          <% else %>
-            <li class="list-group-item"><%= choice.text %></li>
-          <% end %>
+        <% @current_user_response = @result.user_responses.where(result_id: @result.id, question_id: question.id).first %>
+        <% if @current_user_response.correct %>
+          <li class="list-group-item answer"><%= Choice.find(@current_user_response.choice_id).text %></li>
+        <% else %>
+          <li class="list-group-item incorrect"><%= Choice.find(@current_user_response.choice_id).text %></li>
         <% end %>
       </ul>
     </div>

@@ -95,6 +95,8 @@ class QuizzesController < ApplicationController
   def destroy
     respond_to do |format|
       quiz = Quiz.find params[:id]
+      results = Result.where(quiz_id: quiz.id)
+      results.each { |result| result.destroy }
       quiz.destroy
       format.json { render json: {msg: "quiz deleted successfully"} }
     end
