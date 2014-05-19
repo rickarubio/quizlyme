@@ -13,7 +13,7 @@
   </thead>
   <tbody>
     <% @results.each do |result| %>
-      <tr class="results-row">
+      <tr class="results-row" data-results-id="<%= result.id %>">
         <td><%= Quiz.find(result.quiz_id).name %></td>
         <td><%= local_time(result.created_at) %></td>
         <td><%= number_to_percentage(result.score * 100, precision: 2) %></td>

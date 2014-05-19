@@ -3,7 +3,7 @@ Quizlyme::Application.routes.draw do
 
   resources :users
   resources :quizzes
-  resources :results, only: [:create, :index]
+  resources :results, only: [:create, :index, :show]
   
   get "my_quizzes", to: "quizzes#myquizzes", as: "my_quizzes"
   get "examination/:exam_id", to: "quizzes#examination", as: "examination"

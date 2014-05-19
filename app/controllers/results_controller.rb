@@ -6,6 +6,13 @@ class ResultsController < ApplicationController
     @results = @user.results
   end
 
+  def show
+    @user = current_user
+    @result = Result.where(id: params[:id], user_id: @user.id).first
+    @quiz = Quiz.find @result.quiz_id
+    @questions = @quiz.questions
+  end
+
   def create
     @questions_and_selections = {}
     @quiz = Quiz.find params[:userResponse][:quizID].to_i

@@ -1,0 +1,19 @@
+<h2>Results for <%= @quiz.name %> taken on <%= local_time(@result.created_at) %></h2>
+<% @quiz.questions.each_with_index do |question, idx| %>
+  <div class="panel panel-default question-list">
+    <div class="panel-heading">
+      <h3 class="panel-title">Question #<%= idx + 1 %> - <%= question.text %></h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+        <% question.choices.order(:created_at).each do |choice| %>
+          <% if choice.answer %>
+            <li class="list-group-item answer"><%= choice.text %></li>
+          <% else %>
+            <li class="list-group-item"><%= choice.text %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

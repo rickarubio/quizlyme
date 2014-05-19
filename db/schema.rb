@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512044624) do
+ActiveRecord::Schema.define(:version => 20140519070606) do
 
   create_table "choices", :force => true do |t|
     t.text     "text"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(:version => 20140512044624) do
     t.float    "score"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_responses", :force => true do |t|
+    t.integer  "result_id"
+    t.integer  "quiz_id"
+    t.integer  "question_id"
+    t.integer  "choice_id"
+    t.boolean  "correct"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
