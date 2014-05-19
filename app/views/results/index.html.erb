@@ -1,1 +1,23 @@
-you are on the results page
+<h2>Hello <%= @user.username %>!</h2> 
+<h1>Here are you Quiz Results:</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Quiz Name</th>
+      <th>Submitted On</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= Quiz.find(result.quiz_id).name %></td>
+        <td><%= local_time(result.created_at) %></td>
+        <td><%= number_to_percentage(result.score * 100, precision: 2) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>

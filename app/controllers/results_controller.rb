@@ -2,6 +2,8 @@ class ResultsController < ApplicationController
   before_filter :redirect_guests
 
   def index
+    @user = current_user
+    @results = @user.results
   end
 
   def create

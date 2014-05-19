@@ -3,6 +3,10 @@ body {
   padding-top: 70px;
 }
 
+table {
+  text-align: left;
+}
+
 .row {
   text-align: center;
 }

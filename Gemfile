@@ -23,6 +23,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'local_time', '~> 0.1.0'
+
 group :production do
   gem 'rails_12factor'
 end

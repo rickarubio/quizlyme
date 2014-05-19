@@ -35,7 +35,7 @@ var examination = (function() {
           url: "/results",
           data: { userResponse: userResponses }
         }).done(function() {
-          console.log("successfully submitted quiz results for processing");
+          window.location = "/results"
         }).fail(function() {
           console.log("failed to submitted quiz results for processing");
         });
