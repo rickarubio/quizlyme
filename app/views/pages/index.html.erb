@@ -1,12 +1,17 @@
-<h1>Welcome to the home page.</h1>
+<h1>Welcome to Quizly.me!</h1>
 
-<p>The site is currently under construction.</p>
+<p>Quizly.me makes it easy to create and take quizzes!</p>
 
-<p>Pardon our dust.</p>
+<p>Features are currently being built out daily.</p>
+
+<p>Feel free to contribute and help me out! You can view the source code here:</p> 
+<p><a href="https://github.com/rickarubio/quizlyme">https://github.com/rickarubio/quizlyme</a></p>
+
+<p>Enjoy!</p>
 
 <% if current_user %>
-  <p>Seems that you are logged in</p>
-  <%= link_to "Log out", logout_path, {class: "btn btn-lg btn-primary"} %>
+  <p>Please proceed to your dashboard!</p>
+  <%= link_to "Dashboard", user_path(current_user), {class: "btn btn-lg btn-primary dashboard-button"} %>
 <% else %>
   <p>You are currently not logged in</p>
   <%= link_to "Log in", login_path, {class: "btn btn-lg btn-primary"} %>
