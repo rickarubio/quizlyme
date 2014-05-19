@@ -14,7 +14,6 @@
   <%= link_to "Dashboard", user_path(current_user), {class: "btn btn-lg btn-primary dashboard-button"} %>
 <% else %>
   <p>You are currently not logged in</p>
-  <%= link_to "Log in", login_path, {class: "btn btn-lg btn-primary"} %>
-  <p>Or create an account if you don't already have one</p>
-  <%= link_to "Create Account", new_user_path, {class: "btn btn-lg btn-primary"} %>
+  <%= link_to "Log in", login_path, {class: "btn btn-lg btn-primary homepage-button"} %>
+  <%= link_to "Create Account", new_user_path, {class: "btn btn-lg btn-primary homepage-button"} %>
 <% end %>
