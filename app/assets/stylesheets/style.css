@@ -12,6 +12,14 @@ body {
   cursor: pointer;
 }
 
+.selected-answer, .selected-answer:hover {
+  background-color: rgba(27, 195, 248, 1.0);
+}
+
+.submit-examination {
+  margin: 8px 8px 32px 8px;
+}
+
 .user-actions {
   margin: auto;
   width: 80%;

@@ -7,6 +7,7 @@ var examination = (function() {
     isExamination: function() {
       if (document.location.pathname.match("/examination/")) {
         examination.markUserSelection();
+        examination.listenOnSubmit();
       }
     },
     markUserSelection: function() {
@@ -14,15 +15,46 @@ var examination = (function() {
         // visually mark the user's selected answer choice
         var selectedChoice = $(this);
 
-        selectedChoice.css('background-color', 'rgba(27, 195, 248, 1.0)');
+        selectedChoice.attr('class', 'list-group-item examination-choice selected-answer')
 
         selectedChoice.parent().children().each(function(idx, choice) {
           if (!$(choice).is(selectedChoice)) {
-            $(choice).css('background-color', '');
+            $(choice).attr('class', 'list-group-item examination-choice');
           }
         });
 
       })
+    },
+
+    listenOnSubmit: function() {
+      $('.submit-examination').on('click', function(e) {
+        e.preventDefault();
+        var userResponses = examination.collectUserResponses();
+        $.ajax({
+          type: "POST",
+          url: "/results",
+          data: { userResponse: userResponses }
+        }).done(function() {
+          console.log("successfully submitted quiz results for processing");
+        }).fail(function() {
+          console.log("failed to submitted quiz results for processing");
+        });
+      })
+    },
+
+    collectUserResponses: function() {
+      var quizID = $('h1').data('quiz-id');
+      var userResponse = {
+        "questionIDs": {}, 
+        "quizID": quizID      
+      }
+
+      $('.question-list').each(function(idx, question) {
+        var questionID = $(question).data('question-id');
+        var choiceID = $(question).find('.selected-answer').data('choice-id');
+        userResponse["questionIDs"][questionID] = {"choiceID": choiceID}
+      });
+      return userResponse
     }
   }
 })();
